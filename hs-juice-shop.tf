@@ -10,7 +10,7 @@ resource "aws_vpc" "main" {
 # Define las subredes públicas
 resource "aws_subnet" "public1" {
   vpc_id            = aws_vpc.main.id
-  cidr_block        = "10.10.1.0/24"
+  cidr_block        = "10.10.1.0/25"
   availability_zone = "us-east-1a"
 }
 
@@ -175,7 +175,7 @@ resource "aws_elastic_beanstalk_environment" "environment_app_juice_shop" {
   setting {
     namespace = "aws:autoscaling:launchconfiguration"
     name      = "InstanceType"
-    value     = "t3.medium"
+    value     = "t3.large"
   }
   setting {
     namespace = "aws:autoscaling:launchconfiguration"
