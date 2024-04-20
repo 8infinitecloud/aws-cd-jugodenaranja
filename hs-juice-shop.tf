@@ -214,13 +214,7 @@ resource "random_id" "app_suffix" {
   byte_length = 4  # Longitud del identificador único (en bytes) que deseas generar
 }
 
-variable "cicd" {
-  type        = string
-  default     = "true"
-}
-
 resource "aws_codepipeline" "pipeline-juice-shop-ci-cd" {
-  count = var.cicd != "true" ? 1 : 0
   name     = "pipeline-juice-shop-ci-cd"
   role_arn = aws_iam_role.codepipeline_role_juice_shop.arn
 
