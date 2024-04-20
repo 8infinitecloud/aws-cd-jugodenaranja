@@ -328,7 +328,7 @@ resource "aws_iam_role_policy" "codepipeline_policy" {
 
 # Define el bucket S3 para almacenar los artefactos del pipeline
 resource "aws_s3_bucket" "pipeline_artifacts" {
-  bucket = "pipeline-gh-artifacts-juice-shop"
+  bucket = "pipeline-gh-artifacts-juice-shop-gh"
   force_destroy = true
 }
 
