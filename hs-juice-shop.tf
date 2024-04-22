@@ -4,33 +4,33 @@
 
 # Define la VPC
 resource "aws_vpc" "main" {
-  cidr_block = "10.10.0.0/16"
+  cidr_block = var.vpc
 }
 
 # Define las subredes públicas
 resource "aws_subnet" "public1" {
   vpc_id            = aws_vpc.main.id
-  cidr_block        = "10.10.1.0/25"
-  availability_zone = "us-east-1a"
+  cidr_block        = var.subnetpublica1
+  availability_zone = var.availability_zone1a
 }
 
 resource "aws_subnet" "public2" {
   vpc_id            = aws_vpc.main.id
-  cidr_block        = "10.10.2.0/24"
-  availability_zone = "us-east-1b"
+  cidr_block        = var.subnetpublica2
+  availability_zone = var.availability_zone1b
 }
 
 # Define las subredes privadas
 resource "aws_subnet" "private1" {
   vpc_id            = aws_vpc.main.id
-  cidr_block        = "10.10.3.0/24"
-  availability_zone = "us-east-1a"
+  cidr_block        = var.subnetprivate1
+  availability_zone = var.availability_zone1a
 }
 
 resource "aws_subnet" "private2" {
   vpc_id            = aws_vpc.main.id
-  cidr_block        = "10.10.4.0/24"
-  availability_zone = "us-east-1b"
+  cidr_block        = var.subnetprivate2
+  availability_zone = var.availability_zone1b
 }
 
 # Crea la tabla de rutas para las subredes públicas
@@ -108,23 +108,10 @@ resource "aws_eip" "nat" {
 # Elastic Beanstalk
 #############################################################
 
-#resource "aws_s3_bucket" "s3-juice-shop-workshop" {
-#  bucket = "juice-shop-workshop"
-#}
-
 # Define la aplicación Elastic Beanstalk
 resource "aws_elastic_beanstalk_application" "app_juice_shop" {
   name = "juice-shop-nodejs-app"
 }
-
-# Define la versión de la aplicación Elastic Beanstalk
-#resource "aws_elastic_beanstalk_application_version" "app_juice_shop_version" {
-#  application = aws_elastic_beanstalk_application.app_juice_shop.name
-#  name        = "my-app-version"
-#  description = "My Node.js application version"
-#  bucket = "aws_s3_bucket.s3-juice-shop-workshop"
-#  key    = "my-bucket/to/your/app.zip"
-#}
 
 # Define el entorno de despliegue Elastic Beanstalk
 resource "aws_elastic_beanstalk_environment" "environment_app_juice_shop" {
@@ -159,14 +146,8 @@ resource "aws_elastic_beanstalk_environment" "environment_app_juice_shop" {
   setting {
     namespace = "aws:ec2:vpc"
     name = "ELBSubnets"
-    value = "${aws_subnet.public1.id},${aws_subnet.public2.id}"
+    value = "${aws_subnet.public1.id},${aws_subnet.public2.id}" # Las subredes privadas donde deseas desplegar el balanceador
   }
-  # Configuración de la versión de la aplicación
-  #setting {
-  #  namespace = "aws:elasticbeanstalk:application"
-  #  name      = "ApplicationVersion"
-  #  value     = aws_elastic_beanstalk_application_version.app_juice_shop_version.name
-  #}
   setting {
     namespace = "aws:ec2:vpc"
     name      = "ELBScheme"
@@ -202,7 +183,6 @@ resource "aws_elastic_beanstalk_environment" "environment_app_juice_shop" {
     aws_vpc.main,
     aws_nat_gateway.main
   ]
-  # Especifica la configuración adicional según sea necesario, como variables de entorno, configuración de red, etc.
 }
 #############################################################
 # AWS CodePipeline
@@ -237,7 +217,7 @@ resource "aws_codepipeline" "pipeline-juice-shop-ci-cd" {
 
       configuration = {
         ConnectionArn    = aws_codestarconnections_connection.gh-juice-shop.arn
-        FullRepositoryId = "8infinitecloud/juice-shop"
+        FullRepositoryId = var.repository
         BranchName       = "master"
       }
     }
@@ -257,8 +237,6 @@ resource "aws_codepipeline" "pipeline-juice-shop-ci-cd" {
       configuration = {
         ApplicationName          = aws_elastic_beanstalk_application.app_juice_shop.name
         EnvironmentName          = aws_elastic_beanstalk_environment.environment_app_juice_shop.name
-#        IgnoreApplicationStopFailures = "false"
-#        VersionLabel             = "AppVersion_${random_id.app_suffix.hex}"
       }
     }
   }

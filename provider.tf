@@ -7,6 +7,10 @@ terraform {
   }
 }
 
+# Configuración del proveedor AWS para Terraform
+
 provider "aws" {
+  # Región de AWS donde se desplegarán los recursos.
+  # Cambia el valor de la región según tu ubicación o requisitos.
   region = "us-east-1"
 }
