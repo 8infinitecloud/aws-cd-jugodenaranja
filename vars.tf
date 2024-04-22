@@ -11,25 +11,25 @@ variable "vpc" {
 variable "subnetpublica1" {
 # subnetpublica1: nombre de la primera subred pública. Ejemplo: "subnet-publica-1"
   type = string
-  default = "10.10.0.0/24"
+  default = "10.10.1.0/25"
 }
 
 variable "subnetpublica2" {
 # subnetpublica1: nombre de la primera subred pública. Ejemplo: "subnet-publica-2"
   type = string
-  default = "10.10.1.0/24"
+  default = "10.10.1.128/25"
 }
 
 variable "subnetprivate1" {
 # subnetprivate1: nombre de la primera subred privada. Ejemplo: "subnet-privada-1"
   type = string
-  default = "10.10.2.0/24"
+  default = "10.10.0.0/25"
 }
 
 variable "subnetprivate2" {
 # subnetprivate1: nombre de la primera subred privada. Ejemplo: "subnet-privada-2"
   type = string
-  default = "10.10.3.0/24"
+  default = "10.10.0.0/25"
 }
 
 variable "availability_zone1a" {
