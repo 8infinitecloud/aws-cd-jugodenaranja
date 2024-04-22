@@ -1,16 +1,8 @@
 #############################################################
-# VARIABLES PROVIDER
-#############################################################
-#!!! OBLIGATORIO EDITAR !!!
-#ENTRE LAS COMILLAS COLOCA EL VALOR CORRESPONDIENTE
-
-region = ""
-# region: nombre de la región en minúsculas donde se encuentra el bucket tfstate y donde se realizará el despliegue de los recursos. Ejemplo: "us-west-2"
-
-#############################################################
 # VARIABLES MAIN: HS-JUICE-SHOP
 #############################################################
 #!!! OBLIGATIORIO EDITAR !!!
+# Asigna los availability zones disponibles en tu REGION que configuraste en provider.tf
 
 availability_zone1a = ""
 # availability_zone1a: nombre de la primera zona de disponibilidad. Ejemplo: "us-west-2a"
