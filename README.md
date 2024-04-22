@@ -66,6 +66,7 @@ La protección de la rama `main` está configurada para requerir un pull request
 ## Pre-requesito y estructura del terraform en el Repositorio
 
 - `backend.tf`: Contiene la configuración del backend de Terraform, como el almacenamiento remoto del estado en un proveedor específico, como S3.
+    IMPORTANTE: Existen variables a nivel de terraform que son importantes configurar para tu entorno, en este archivo estan los comentarios que te indicaran cuales son indispensables de modificar y otras opcionales.
 - `hs-juice-shop.tf`: Incluye el código de Terraform para definir la infraestructura de red, Elastic Beanstalk y el pipeline de CodePipeline para el proyecto Juice Shop.
 - `provider.tf`: Define el proveedor de Terraform utilizado en este proyecto, que en este caso es AWS.
 - `vars.tf`: Define las variables de Terraform utilizadas en el proyecto.

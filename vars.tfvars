@@ -1,14 +1,8 @@
 #############################################################
-# VARIABLES BACKEND AND PROVIDER
+# VARIABLES PROVIDER
 #############################################################
 #!!! OBLIGATORIO EDITAR !!!
 #ENTRE LAS COMILLAS COLOCA EL VALOR CORRESPONDIENTE
-
-bucket = ""
-# bucket: nombre único del bucket en minúsculas sin espacios ni caracteres especiales. Ejemplo: "mi-bucket-tfstate"
-
-tfstate = ""
-# tfstate: nombre del archivo .tfstate en minúsculas. Ejemplo: "terraform.tfstate"
 
 region = ""
 # region: nombre de la región en minúsculas donde se encuentra el bucket tfstate y donde se realizará el despliegue de los recursos. Ejemplo: "us-west-2"

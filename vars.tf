@@ -1,16 +1,6 @@
 #############################################################
-# VARIABLES BACKEND AND PROVIDER
+# VARIABLES PROVIDER
 #############################################################
-
-variable "bucket" {
-  type = string
-  default = "tf-juice-shop-state-awscd"
-}
-
-variable "tfstate" {
-  type = string
-  default = "terraform.tfstate"
-}
 
 variable "region" {
   type = string
