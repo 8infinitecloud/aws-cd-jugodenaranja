@@ -70,7 +70,6 @@ La protección de la rama `main` está configurada para requerir un pull request
 - `hs-juice-shop.tf`: Incluye el código de Terraform para definir la infraestructura de red, Elastic Beanstalk y el pipeline de CodePipeline para el proyecto Juice Shop.
 - `provider.tf`: Define el proveedor de Terraform utilizado en este proyecto, que en este caso es AWS.
 - `vars.tf`: Define las variables de Terraform utilizadas en el proyecto.
-- `vars.tfvars`: Archivo de variables que puede ser utilizado para asignar valores a las variables definidas en `vars.tf`.
     IMPORTANTE: Existen variables a nivel de terraform que son importantes configurar para tu entorno, en este archivo estan los comentarios que te indicaran cuales son indispensables de modificar y otras opcionales.
 
 ## Estructura del GitHub Actions en el Repositorio
