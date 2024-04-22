@@ -29,7 +29,7 @@ variable "subnetprivate1" {
 variable "subnetprivate2" {
 # subnetprivate1: nombre de la primera subred privada. Ejemplo: "subnet-privada-2"
   type = string
-  default = "10.10.0.0/25"
+  default = "10.10.0.128/25"
 }
 
 variable "availability_zone1a" {
