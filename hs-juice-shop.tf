@@ -217,7 +217,7 @@ resource "aws_codepipeline" "pipeline-juice-shop-ci-cd" {
 
       configuration = {
         ConnectionArn    = aws_codestarconnections_connection.gh-juice-shop.arn
-        FullRepositoryId = "8infinitecloud/juice-shop"
+        FullRepositoryId = var.repository
         BranchName       = "master"
       }
     }

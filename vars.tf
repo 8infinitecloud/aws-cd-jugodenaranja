@@ -55,3 +55,8 @@ variable "availability_zone1b" {
   type = string
   default = "us-east-1b"
 }
+
+variable "repository" {
+    type = string
+    default = "8infinitecloud/juice-shop"
+}

@@ -1,8 +1,30 @@
-# JUGO DE NARANAJA CON CODEPIPELINE Y ELASTIC BEANSTALK
+# _Jugo de naranja con CodePipeline y Elastic Beanstalk_
 
-## Indicaciones generales:
+## _Descripción_
 
-## Pre-requisito de configuracion de GitHub
+El objetivo de este proyecto es implementar un flujo CI/CD (Integración Continua / Entrega Continua) utilizando GitHub Actions, Terraform y AWS para desplegar la aplicación Juice Shop de OWASP. Juice Shop es una aplicación web de referencia de código abierto para probar y mejorar las habilidades de hacking y seguridad en aplicaciones web.
+
+## _Objetivos_
+
+- Configurar un flujo de trabajo de CI/CD utilizando GitHub Actions para automatizar la construcción, pruebas y despliegue de la aplicación Juice Shop.
+- Utilizar Terraform para definir la infraestructura necesaria en AWS para desplegar la aplicación.
+- Desplegar automáticamente la aplicación en AWS después de que se realicen cambios en el repositorio de infraestructura o aplicación.
+
+## _Pasos del Proyecto_
+
+1. **Pre-requisito de configuraciones de GitHub**: Realizar un fork o clon de este repositorio y configurar un repositorio en GitHub para el proyecto Juice Shop.
+
+2. **Pre-requesito y estructura del terraform en el Repositorio**: Realizar las configuraciones necesarias de acuerdo al ambiente personal en AWS que tenga para el despliegue de los recursos con terraform.
+
+3. **Estructura del GitHub Actions en el Repositorio**: Entender el flujo de trabajo de GitHub Actions para automatizar la construcción, pruebas y despliegue de la infraestructura.
+
+## _Resultados Esperados_
+
+Con este proyecto, se espera comprender y practicar el proceso completo de un pipeline CI/CD, desde el código hasta el despliegue de una aplicación, utilizando herramientas modernas como GitHub Actions, Terraform y AWS.
+
+## _Indicaciones:_
+
+## Pre-requisito de configuraciones de GitHub
 
 ### Credenciales AWS
 Las credenciales de AWS (AWS_ACCESS_KEY_ID y AWS_SECRET_ACCESS_KEY) se almacenan como secretos en la configuración del repositorio de GitHub. Estos secretos se utilizan en los flujos de trabajo de GitHub Actions para autenticar y autorizar las operaciones de Terraform en AWS. Al utilizar secretos, se mantiene la seguridad de las credenciales y se evita exponerlas en texto plano en los archivos de configuración.
@@ -41,7 +63,7 @@ La protección de la rama `main` está configurada para requerir un pull request
 
 7. **Guarda los Cambios:** Después de configurar las reglas de protección según tus preferencias, haz clic en el botón "Save changes" (Guardar cambios) para aplicar la protección a la rama `main`.
 
-## Estructura del terraform en el Repositorio
+## Pre-requesito y estructura del terraform en el Repositorio
 
 - `backend.tf`: Contiene la configuración del backend de Terraform, como el almacenamiento remoto del estado en un proveedor específico, como S3.
 - `hs-juice-shop.tf`: Incluye el código de Terraform para definir la infraestructura de red, Elastic Beanstalk y el pipeline de CodePipeline para el proyecto Juice Shop.
@@ -77,7 +99,10 @@ Este archivo de flujo de trabajo, "Destroy Infrastructure", se activa manualment
 - **Destrucicón de la infraestructura**: Ejecuta `terraform destroy` para destruir todos los recursos de la infraestructura gestionada por Terraform.
 - **Notificación de resultado**: Proporciona información sobre el éxito o el fallo de la destrucción de la infraestructura.
 
-### Advertencia de costos sobre el despliegue de Infraestructura en AWS 
+### <span style="color:red">Advertencia de costos sobre el despliegue de Infraestructura en AWS </span>
 
 Este repositorio contiene código Terraform para desplegar una infraestructura en AWS que incluye una VPC, subredes públicas y privadas, un NAT Gateway, Elastic Beanstalk para despliegue de aplicaciones, y un pipeline de CodePipeline para automatizar el despliegue de la aplicación en Elastic Beanstalk. Una vez terminada la practica eliminar los recursos y desplegarlos nuevamente cuando se proponga un nuevo objetivo o continue con el que estaba revisando.
 
+## _Donde esta la aplicación?_
+
+En las configuraciones de codepipeline definimos cual es el repositorio que utilizaremos para realizar el depsliegue de la aplicacion en Elastic Beanstalk, la utilizada se encuentra definida con la variable `repository` en vars.tf o la puedes cambiar por tu propio fork u otra aplicacion en nodejs 20 en vars.tfvars.

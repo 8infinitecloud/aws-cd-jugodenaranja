@@ -45,3 +45,6 @@ subnetprivate1 = ""
 
 subnetprivate2 = ""
 # subnetprivate2: nombre de la segunda subred privada. Ejemplo: "subnet-privada-2"
+
+repository = ""
+# repository: repositorio donde se encuentra nuestra aplicación "Juice Shop"
