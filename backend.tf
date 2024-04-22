@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
-    bucket = "tf-juice-shop-state-awscd"
-    key    = "terraform.tfstate"
-    region = "us-east-1"
+    bucket = var.bucket
+    key    = var.tfstate
+    region = var.region
   }
 }
